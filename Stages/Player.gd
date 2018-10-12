@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 var motion = Vector2()
 var stealth = false
-var loot = 0
 var MAX_SPEED = 100
 const ACCELERATION = 25
 

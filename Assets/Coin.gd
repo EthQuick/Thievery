@@ -1,4 +1,13 @@
-extends Area2D
+extends Node2D
 
-func _physics_process(delta):
-	#TODO increment the loot variable in player when it intersects with this
+export var value = 1
+
+func _ready():
+	get_parent().coins += value
+	get_node("Area2D").connect("body_entered", self, "_get_coin")
+
+func _get_coin(body):
+	#print(get_parent().loot)
+	get_parent().loot += value
+	print(get_parent().loot)
+	queue_free()
