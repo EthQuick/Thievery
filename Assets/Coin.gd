@@ -1,13 +1,12 @@
 extends Node2D
 
 export var value = 1
+signal get_loot
 
 func _ready():
-	get_parent().coins += value
 	get_node("Area2D").connect("body_entered", self, "_get_coin")
 
 func _get_coin(body):
-	#print(get_parent().loot)
-	get_parent().loot += value
-	print(get_parent().loot)
-	queue_free()
+	if body.get_name() == "Player":
+		emit_signal("get_loot")
+		queue_free()
