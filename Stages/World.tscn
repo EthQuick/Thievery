@@ -1,22 +1,27 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Stages/World.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Wall_TileSet.tres" type="TileSet" id=3]
-[ext_resource path="res://Assets/Coin.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Wall_TileSet.tres" type="TileSet" id=4]
+[ext_resource path="res://Assets/Coin.tscn" type="PackedScene" id=5]
 
-[node name="World" type="Node"]
+[node name="Top" type="Node" index="0"]
 
 script = ExtResource( 1 )
 limit = 0.5
 
-[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Door" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="TileMap" type="TileMap" parent="." index="1"]
+position = Vector2( 288, 160 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="TileMap" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -37,21 +42,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Coin" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Coin" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 128, 64 )
 
-[node name="Coin2" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Coin2" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 256, 128 )
 
-[node name="Coin3" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Coin3" parent="." index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 192, 64 )
-
-[node name="Door" parent="." index="5" instance=ExtResource( 5 )]
-
-position = Vector2( 288, 160 )
-_sections_unfolded = [ "Material", "Visibility" ]
 
 

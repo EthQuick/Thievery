@@ -21,7 +21,3 @@ func _get_loot():
 	if loot >= (coins*limit) and open != true:
 		open = true
 		emit_signal("door_open")
-		print("door open")
-
-
-
