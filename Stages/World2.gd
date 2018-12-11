@@ -14,6 +14,8 @@ func _ready():
 		if "Coin" in i.get_name():
 			i.connect("get_loot", self, "_get_loot")
 			coins += i.value
+		if "Door" in i.get_name():
+			i.connect("next_world", self, "_exit")
 	pass
 
 func _get_loot():
@@ -21,3 +23,6 @@ func _get_loot():
 	if loot >= (coins*limit) and open != true:
 		open = true
 		emit_signal("door_open")
+
+func _exit():
+	get_tree().change_scene("Stages/World.tscn")

@@ -4,6 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 var open = false
+signal next_world
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -25,4 +26,4 @@ func _exit(body):
 	if open:
 		if body.get_name() == "Player":
 			#move to next stage
-			get_tree().change_scene("Stages/World2.tscn")
+			emit_signal("next_world")
