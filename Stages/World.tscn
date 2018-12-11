@@ -10,6 +10,7 @@
 
 script = ExtResource( 1 )
 limit = 0.5
+next_world = "Stages/World2.tscn"
 
 [node name="Door" parent="." index="0" instance=ExtResource( 2 )]
 

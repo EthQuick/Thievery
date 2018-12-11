@@ -6,6 +6,7 @@ var loot = 0
 export var limit = 0.5
 var open = false
 signal door_open
+export var next_world = "Stages/World2.tscn"
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -25,4 +26,4 @@ func _get_loot():
 		emit_signal("door_open")
 
 func _exit():
-	get_tree().change_scene("Stages/World2.tscn")
+	get_tree().change_scene(next_world)
