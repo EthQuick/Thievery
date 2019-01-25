@@ -34,7 +34,9 @@ func _physics_process(delta):
 		motion.y = lerp(motion.y, 0, 0.2)
 	
 	if Input.is_action_just_pressed("ui_select"):
-		stealth = not stealth
+		stealth = true
+	elif Input.is_action_just_released("ui_select"):
+		stealth = false
 	
 	if stealth:
 		$Sprite.play("Stealth_Idle")

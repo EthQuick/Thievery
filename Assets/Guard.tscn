@@ -24,12 +24,13 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_mask = 0
+collision_layer = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 speed = 50
+vis_rad = 50
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -43,6 +44,24 @@ scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="LineofSight" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LineofSight" index="0"]
+
 [connection signal="body_entered" from="." to="." method="_on_Guard_body_entered"]
+
+[connection signal="body_entered" from="LineofSight" to="." method="_on_LineofSight_body_entered"]
+
+[connection signal="body_exited" from="LineofSight" to="." method="_on_LineofSight_body_exited"]
 
 
