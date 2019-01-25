@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Player.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Player_Stealth.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player_Stealth.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Unstealth_Idle",
+"name": "Stealth_Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "Stealth_Idle",
+"name": "Unstealth_Idle",
 "speed": 5.0
 } ]
 
@@ -36,6 +36,11 @@ _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
+NORM_SPEED = 100
+TOP_BORD = -32
+LEFT_BORD = -32
+RIGHT_BORD = 672
+BOT_BORD = 384
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -58,8 +63,8 @@ current = true
 zoom = Vector2( 1, 1 )
 limit_left = -32
 limit_top = -32
-limit_right = 10000000
-limit_bottom = 10000000
+limit_right = 672
+limit_bottom = 384
 limit_smoothed = false
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false

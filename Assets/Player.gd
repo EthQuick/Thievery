@@ -1,9 +1,22 @@
 extends KinematicBody2D
 
+export (int) var NORM_SPEED = 100
+export (int) var TOP_BORD = -32
+export (int) var LEFT_BORD = -32
+export (int) var RIGHT_BORD = 672
+export (int) var BOT_BORD = 384
+
 var motion = Vector2()
 var stealth = false
-var MAX_SPEED = 100
+var STEALTH_SPEED = NORM_SPEED * 0.75
+var MAX_SPEED = NORM_SPEED 
 const ACCELERATION = 25
+
+func _ready():
+	get_node("Camera2D").set_limit(MARGIN_TOP, TOP_BORD)
+	get_node("Camera2D").set_limit(MARGIN_LEFT, LEFT_BORD)
+	get_node("Camera2D").set_limit(MARGIN_RIGHT, RIGHT_BORD)
+	get_node("Camera2D").set_limit(MARGIN_BOTTOM, BOT_BORD)
 
 func _physics_process(delta):
 	
@@ -25,10 +38,10 @@ func _physics_process(delta):
 	
 	if stealth:
 		$Sprite.play("Stealth_Idle")
-		MAX_SPEED = 50
+		MAX_SPEED = STEALTH_SPEED
 	else:
 		$Sprite.play("Unstealth_Idle")
-		MAX_SPEED = 100
+		MAX_SPEED = NORM_SPEED
 	
 	move_and_slide(motion)
 	pass

@@ -12,6 +12,7 @@ func _ready():
 	#Initialize the door to closed
 	get_node("/root/Top").connect("door_open", self, "_open_door")
 	$Sprite.play("Closed")
+	add_to_group("Door")
 	
 	#Set up for moving through the door when it is open
 	get_node("Area2D").connect("body_entered", self, "_exit")

@@ -21,9 +21,21 @@ func _ready():
 
 func _get_loot():
 	loot += 1
+	global.score += 1
 	if loot >= (coins*limit) and open != true:
 		open = true
 		emit_signal("door_open")
+	$HUD.update_score(global.score)
 
 func _exit():
 	get_tree().change_scene(next_world)
+
+func _game_over():
+	$HUD.show_message("Game Over")
+	#Wait for a bit then restart
+	get_tree().paused = true
+	$Game_Over.start()
+	yield($Game_Over, "timeout")
+	global.score = 0
+	get_tree().paused = false
+	get_tree().change_scene("Stages/World.tscn")

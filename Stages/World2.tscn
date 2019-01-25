@@ -1,25 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Stages/World2.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Door.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Wall_TileSet.tres" type="TileSet" id=3]
-[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Wall_TileSet.tres" type="TileSet" id=4]
+[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Coin.tscn" type="PackedScene" id=6]
 
-[node name="Top" type="Node" index="0"]
+[node name="Top" type="Node"]
 
 script = ExtResource( 1 )
 limit = 0.5
 next_world = "Stages/World.tscn"
 
-[node name="Door" parent="." index="0" instance=ExtResource( 2 )]
+[node name="HUD" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="Door" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 480, 96 )
 
-[node name="TileMap" type="TileMap" parent="." index="1"]
+[node name="TileMap" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -40,25 +43,25 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="3" instance=ExtResource( 5 )]
 
-[node name="Coin1" parent="." index="3" instance=ExtResource( 5 )]
+[node name="Coin1" parent="." index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 416, 224 )
 
-[node name="Coin2" parent="." index="4" instance=ExtResource( 5 )]
+[node name="Coin2" parent="." index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 288, 256 )
 
-[node name="Coin3" parent="." index="5" instance=ExtResource( 5 )]
+[node name="Coin3" parent="." index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 192, 192 )
 
-[node name="Coin4" parent="." index="6" instance=ExtResource( 5 )]
+[node name="Coin4" parent="." index="7" instance=ExtResource( 6 )]
 
 position = Vector2( 96, 224 )
 
-[node name="Coin5" parent="." index="7" instance=ExtResource( 5 )]
+[node name="Coin5" parent="." index="8" instance=ExtResource( 6 )]
 
 position = Vector2( 352, 32 )
 
