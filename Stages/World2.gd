@@ -1,28 +1,33 @@
 extends Node
 
 # class member variables go here, for example:
-var coins = 0
+var coin_val = 0
 var loot = 0
 export var limit = 0.5
 var open = false
 signal door_open
-export var next_world = "Stages/World.tscn"
+export var next_world = "Stages/World3.tscn"
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	for i in get_children():
-		if "Coin" in i.get_name():
-			i.connect("get_loot", self, "_get_loot")
-			coins += i.value
-		if "Door" in i.get_name():
-			i.connect("next_world", self, "_exit")
+	if get_tree().paused:
+		get_tree().paused = false
+	var coins = get_tree().get_nodes_in_group("Coins")
+	for c in coins:
+		c.connect("get_loot", self, "_get_loot")
+		coin_val += 1
+	var door = get_tree().get_nodes_in_group("Door")
+	door[0].connect("next_world", self, "_exit")
+	var guards = get_tree().get_nodes_in_group("Guards")
+	for g in guards:
+		g.connect("game_over", self, "_game_over")
 	pass
 
 func _get_loot():
 	loot += 1
 	global.score += 1
-	if loot >= (coins*limit) and open != true:
+	if loot >= (coin_val*limit) and open != true:
 		open = true
 		emit_signal("door_open")
 	$HUD.update_score(global.score)

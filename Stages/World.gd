@@ -11,6 +11,8 @@ export var next_world = "Stages/World2.tscn"
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	if get_tree().paused:
+		get_tree().paused = false
 	var coins = get_tree().get_nodes_in_group("Coins")
 	for c in coins:
 		c.connect("get_loot", self, "_get_loot")
@@ -40,5 +42,5 @@ func _game_over():
 	$Game_Over.start()
 	yield($Game_Over, "timeout")
 	global.score = 0
+	get_tree().change_scene("Stages/StartScreen.tscn")
 	get_tree().paused = false
-	get_tree().change_scene("Stages/World.tscn")
